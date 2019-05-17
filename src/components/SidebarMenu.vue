@@ -146,7 +146,7 @@ export default {
       this.isCollapsed = val
     }
   },
-  created () {
+  mounted () {
     this.$on('mouseEnterItem', (val) => {
       this.mobileItem = null
       this.$nextTick(() => {

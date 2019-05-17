@@ -3,10 +3,12 @@ export const itemMixin = {
     return {
       active: false,
       childActive: false,
-      itemShow: false
+      itemShow: false,
+      isSSR: process.server, //
     }
   },
-  created () {
+
+  mounted() {
     this.active = this.item && this.item.href ? this.isLinkActive(this.item) : false
     this.childActive = this.item && this.item.child ? this.isChildActive(this.item.child) : false
     if (this.item && this.item.child) {

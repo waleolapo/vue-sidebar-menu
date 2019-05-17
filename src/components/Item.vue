@@ -5,36 +5,74 @@
     @mouseenter="mouseEnter($event)"
   >
     <template v-if="isRouterLink">
-      <router-link
-        class="vsm-link"
-        :class="item.class"
-        :to="item.href"
-        :disabled="item.disabled"
-        :event="item.disabled ? '' : 'click'"
-        v-bind="item.attributes"
-        @click.native="clickEvent"
-      >
-        <i
-          v-if="item.icon"
-          class="vsm-icon"
-          :class="item.icon"
-        />
-        <template v-if="!isCollapsed">
-          <span
-            v-if="item.badge"
-            :style="[rtl ? (item.child ? {'margin-left' : '30px'} : '') : (item.child ? {'margin-right' : '30px'} : '')]"
-            class="vsm-badge"
-            :class="[item.badge.class ? item.badge.class : 'default-badge']"
-            v-bind="item.badge.attributes"
-          >{{ item.badge.text }}</span>
-          <span class="vsm-title">{{ item.title }}</span>
-          <i
-            v-if="item.child"
-            class="vsm-arrow"
-            :class="{'open-arrow' : show}"
-          />
-        </template>
-      </router-link>
+        <template v-if='isSSR'>
+          <nuxt-link
+            class="vsm-link"
+            :class="item.class"
+            :to="item.href"
+            :disabled="item.disabled"
+            :event="item.disabled ? '' : 'click'"
+            v-bind="item.attributes"
+            @click.native="clickEvent"
+          >
+            <i
+              v-if="item.icon"
+              class="vsm-icon"
+              :class="item.icon"
+            />
+            <template v-if="!isCollapsed">
+              <span
+                v-if="item.badge"
+                :style="[rtl ? (item.child ? {'margin-left' : '30px'} : '') : (item.child ? {'margin-right' : '30px'} : '')]"
+                class="vsm-badge"
+                :class="[item.badge.class ? item.badge.class : 'default-badge']"
+                v-bind="item.badge.attributes"
+              >{{ item.badge.text }}</span>
+              <span class="vsm-title">{{ item.title }}</span>
+              <i
+                v-if="item.child"
+                class="vsm-arrow"
+                :class="{'open-arrow' : show}"
+              />
+
+
+            </template>
+          </nuxt-link>
+         </template>
+         <template v-else>
+            <router-link
+              class="vsm-link"
+              :class="item.class"
+              :to="item.href"
+              :disabled="item.disabled"
+              :event="item.disabled ? '' : 'click'"
+              v-bind="item.attributes"
+              @click.native="clickEvent"
+            >
+              <i
+                v-if="item.icon"
+                class="vsm-icon"
+                :class="item.icon"
+              />
+              <template v-if="!isCollapsed">
+                <span
+                  v-if="item.badge"
+                  :style="[rtl ? (item.child ? {'margin-left' : '30px'} : '') : (item.child ? {'margin-right' : '30px'} : '')]"
+                  class="vsm-badge"
+                  :class="[item.badge.class ? item.badge.class : 'default-badge']"
+                  v-bind="item.badge.attributes"
+                >{{ item.badge.text }}</span>
+                <span class="vsm-title">{{ item.title }}</span>
+                <i
+                  v-if="item.child"
+                  class="vsm-arrow"
+                  :class="{'open-arrow' : show}"
+                />
+
+
+              </template>
+            </router-link>
+          </template>
     </template>
     <template v-else>
       <a
