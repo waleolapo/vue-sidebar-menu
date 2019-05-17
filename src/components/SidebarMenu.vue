@@ -133,7 +133,8 @@ export default {
       mobileItemPos: 0,
       mobileItemHeight: 0,
       closeTimeout: null,
-      activeShow: null
+      activeShow: null,
+      isSSR: process.server,
     }
   },
   computed: {

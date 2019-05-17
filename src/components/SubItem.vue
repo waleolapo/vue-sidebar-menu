@@ -123,6 +123,11 @@ import Item from './Item.vue'
 import { itemMixin, animationMixin } from '../mixin'
 
 export default {
+  data() {
+    return {
+      isSSR: process.server,
+    }
+  },
   components: {
     Item
   },

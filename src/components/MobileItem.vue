@@ -90,6 +90,11 @@
 import { itemMixin } from '../mixin'
 
 export default {
+  data() {
+    return {
+      isSSR: process.server,
+    }
+  },
   mixins: [itemMixin],
   props: {
     item: {

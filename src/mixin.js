@@ -22,7 +22,7 @@ export const itemMixin = {
       }
     }
 
-    if (!this.$router) {
+    if (!this.$router && !this.isSSR) {
       window.addEventListener('hashchange', () => {
         this.active = this.item && this.item.href ? this.isLinkActive(this.item) : false
         this.childActive = this.item && this.item.child ? this.isChildActive(this.item.child) : false

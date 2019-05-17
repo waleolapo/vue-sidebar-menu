@@ -136,6 +136,11 @@ import SubItem from './SubItem.vue'
 import { itemMixin, animationMixin } from '../mixin'
 
 export default {
+  data() {
+    return {
+      isSSR: process.server,
+    }
+  },
   components: {
     SubItem
   },
