@@ -119,7 +119,7 @@
 </template>
 
 <script>
-import Item from './Item.vue'
+import SubSubItem from './SubSubItem.vue'
 import { itemMixin, animationMixin } from '../mixin'
 
 export default {
@@ -129,7 +129,7 @@ export default {
     }
   },
   components: {
-    Item
+    SubSubItem
   },
   mixins: [itemMixin, animationMixin],
   props: {
@@ -139,7 +139,7 @@ export default {
     }
   },
   beforeMount () {
-    this.$options.components.Item = require('./Item.vue').default
+    this.$options.components.SubSubItem = require('./SubSubItem.vue').default
   }
 }
 </script>
