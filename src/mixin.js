@@ -23,7 +23,7 @@ export const itemMixin = {
     }
 
     if (!this.$router && !this.isSSR) {
-      if(window != undefined)
+      if(typeof window != undefined)
         window.addEventListener('hashchange', () => {
           this.active = this.item && this.item.href ? this.isLinkActive(this.item) : false
           this.childActive = this.item && this.item.child ? this.isChildActive(this.item.child) : false
@@ -69,7 +69,7 @@ export const itemMixin = {
       if (this.$route) {
         return this.$route.fullPath.endsWith(route)
       } else {
-        return window != undefined ? window.location.href.endsWith(route) : null
+        return typeof window != undefined ? window.location.href.endsWith(route) : null
       }
     },
     clickEvent (event, mobileItem) {
