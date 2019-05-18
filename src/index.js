@@ -1,4 +1,4 @@
-import SidebarMenu from './components/SidebarMenu.vue'
+import SidebarMenu from './components/SidebarMenu'
 
 export default {
   install (Vue) {

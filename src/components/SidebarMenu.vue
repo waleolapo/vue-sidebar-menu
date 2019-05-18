@@ -163,9 +163,15 @@ export default {
         return
       }
       if (this.closeTimeout) clearTimeout(this.closeTimeout)
-      this.closeTimeout = setTimeout(() => {
-        this.mouseLeave()
-      }, 600)
+
+      let tm = 0;
+      let pd = Promise( (res, rej) => { res(setTimeout(e => { this.mouseLeave() }, 2000)) })
+      pd.then(x => tm = x)
+      this.clearTimeout = tm;
+
+      // this.closeTimeout = setTimeout(() => {
+      //   this.mouseLeave()
+      // }, 600)
     })
   },
   methods: {
